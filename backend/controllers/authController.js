@@ -67,10 +67,40 @@ export const signupController = async (req, res) => {
   }
 };
 
-export const loginController = (req, res) => {
-  res.send("login controller ");
+export const loginController = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    const user = await User.findOne({ username });
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user?.password || ""
+    );
+
+    if (!user || !isPasswordCorrect) {
+      return res.status(400).json({ error: "Invalid Username or Password" });
+    }
+
+    generateWebToken(user._id, res);
+    res.status(200).json({
+      _id: user._id,
+      fullName: user.fullName,
+      username: user.username,
+      profilePic: user.profilePic,
+    });
+  } catch (error) {
+    console.log("Error in login controller", error.message);
+    res.status(500).json({ error: error.message });
+  }
 };
 
 export const logoutController = (req, res) => {
-  res.send("logout controller ");
+  try {
+    res.cookie("jwt","",{maxAge:0});
+    res.status(200).json({message:"Logged out Successfully."})
+    
+  } catch (error) {
+    console.log("Error in login controller", error.message);
+    res.status(500).json({ error: error.message });
+  }
 };
