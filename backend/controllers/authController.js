@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
+import generateWebToken from "../util/generateToken.js";
 
 export const signupController = async (req, res) => {
   try {
@@ -22,7 +23,7 @@ export const signupController = async (req, res) => {
     const userExists = await User.findOne({ username });
 
     if (userExists) {
-      return  res.status(400).send({ message: "The username already exists" });
+      return res.status(400).send({ message: "The username already exists" });
     }
 
     // Create a new User , Adding a new profile Picture based on the gender
@@ -46,6 +47,9 @@ export const signupController = async (req, res) => {
     });
 
     if (newUser) {
+      // Generating the JWT Token here
+      generateWebToken(newUser._id, res);
+
       await newUser.save();
 
       res.status(201).json({
