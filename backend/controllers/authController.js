@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import generateWebToken from "../util/generateToken.js";
