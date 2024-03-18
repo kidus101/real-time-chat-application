@@ -1,4 +1,3 @@
-// STARTER CODE SNIPPET
 import Message from "./Message";
 
 const Messages = () => {

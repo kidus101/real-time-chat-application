@@ -1,4 +1,3 @@
-// STARTER CODE SNIPPET
 import { IoSearchSharp } from "react-icons/io5";
 
 const SearchInput = () => {

@@ -1,6 +1,3 @@
-
-
-// STARTER CODE SNIPPET
 import Conversation from "./Conversation";
 
 const Conversations = () => {

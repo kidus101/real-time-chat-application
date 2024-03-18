@@ -1,4 +1,3 @@
-// STARTER CODE SNIPPET
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 

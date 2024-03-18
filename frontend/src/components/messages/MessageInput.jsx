@@ -1,4 +1,3 @@
-// STARTER CODE SNIPPET
 import { BsSend } from "react-icons/bs";
 
 const MessageInput = () => {
