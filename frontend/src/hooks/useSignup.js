@@ -13,6 +13,7 @@ const useSignup = () => {
     confirmPassword,
     gender,
   }) => {
+    
     const success = handleInputError({
       fullName,
       username,
