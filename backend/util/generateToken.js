@@ -9,8 +9,8 @@ const generateWebToken = (user_id, res) => {
   // 2. Setting the res.cookie with the token generated
   res.cookie("jwt", token, {
     maxAge: 15 * 24 * 60 * 60 * 1000,
-    httpOnly:true,
-    sameSite:"strict",
+    // httpOnly:true,
+    // sameSite:"strict",
   });
 };
 
